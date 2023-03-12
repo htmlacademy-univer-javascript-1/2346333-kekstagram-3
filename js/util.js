@@ -10,5 +10,3 @@ export function returnRandomNumber(min, max) {
 function checkMaxLength(str, maxLength) {
   return str.length <= maxLength;
 }
-
-
