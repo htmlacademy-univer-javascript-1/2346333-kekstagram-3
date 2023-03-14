@@ -1,3 +1,5 @@
 import {arrayWithObjects} from './data.js';
 
-arrayWithObjects.forEach((i) => {Console.log(i);});
+/* eslint-env browser */
+
+arrayWithObjects.forEach((i) => {console.log(i);});
