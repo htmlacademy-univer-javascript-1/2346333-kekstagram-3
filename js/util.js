@@ -1,7 +1,7 @@
 export function returnRandomNumber(min, max) {
 
   if (min < 0 || min >= max) {
-    return 0;
+    throw new Error('Incorrect data');
   } else {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
@@ -10,3 +10,5 @@ export function returnRandomNumber(min, max) {
 function checkMaxLength(str, maxLength) {
   return str.length <= maxLength;
 }
+
+checkMaxLength();
