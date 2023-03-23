@@ -1,3 +1,3 @@
-import {arrayWithObjects} from './data.js';
-
-arrayWithObjects.forEach((i) => {console.log(i);});
+import './data.js';
+import './util.js';
+import './render.js';
