@@ -5,6 +5,7 @@ const picturesBlock = document.querySelector('.pictures');
 const fragment = document.createDocumentFragment();
 
 posts.forEach((post) => {
+  
   const element = templatePicture.content.cloneNode(true);
 
   element.querySelector('.picture__img').src = post.url;
