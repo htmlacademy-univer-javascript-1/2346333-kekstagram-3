@@ -1,4 +1,4 @@
-import { returnRandomNumber } from "./util.js";
+import { returnRandomNumber } from './util.js';
 
 export const posts = Array.from({length: 25}, (_, i) => {
   return {
