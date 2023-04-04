@@ -8,3 +8,7 @@ export function returnRandomNumber(min, max) {
 function checkMaxLength(str, maxLength) {
   return str.length <= maxLength;
 }
+
+export function isEscapeKey(evt) {
+  return evt.key === 'Escape';
+}
