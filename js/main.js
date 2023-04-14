@@ -3,3 +3,5 @@ import './util.js';
 import './render.js';
 import './user-modal.js';
 import './user-form.js';
+import './photo-effect.js';
+import './scale.js';
