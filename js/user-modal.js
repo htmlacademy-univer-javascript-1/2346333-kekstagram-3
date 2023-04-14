@@ -2,6 +2,7 @@ import { addEventListenerImage, removeEventListenerImage } from './scale.js';
 import { changeFilter } from './photo-effect.js';
 import { isEscapeKey } from './util.js';
 
+
 const userModalElement = document.querySelector('.img-upload__overlay');
 const userModalInputElement = document.querySelector('#upload-file');
 const userModalCloseElement = document.querySelector('#upload-cancel');
