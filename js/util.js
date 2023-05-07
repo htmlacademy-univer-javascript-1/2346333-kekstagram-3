@@ -7,8 +7,8 @@ function returnRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function checkMaxLength(str, maxLength) {
-  return str.length <= maxLength;
+function checkLength(str, minLength, maxLength) {
+  return str >= minLength && str <= maxLength;
 }
 
 function isEscapeKey(evt) {
@@ -36,4 +36,4 @@ const showAlert = (message) => {
   }, ALERT_SHOW_TIME);
 };
 
-export {returnRandomNumber, isEscapeKey, showAlert};
+export {returnRandomNumber, isEscapeKey, showAlert, checkLength};

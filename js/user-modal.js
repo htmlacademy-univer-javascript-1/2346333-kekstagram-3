@@ -1,6 +1,6 @@
 import { addEventListenerImage, removeEventListenerImage, resetScale } from './scale.js';
 import { changeFilter, removeFilter } from './photo-effect.js';
-import { isEscapeKey } from './util.js';
+import { isEscapeKey, checkLength } from './util.js';
 import { pristine } from './user-form.js';
 import { displayMessage } from './message.js';
 import { sendData } from './api.js';
@@ -10,6 +10,11 @@ const userModalInputElement = document.querySelector('#upload-file');
 const userModalCloseElement = document.querySelector('#upload-cancel');
 const form = document.querySelector('.img-upload__form');
 const submitButton = form.querySelector('.img-upload__submit');
+
+const validateCommentLength = () => {
+  const commentText = document.querySelector('.text__description').textContent;
+  checkLength(commentText.length, 20, 140);
+};
 
 const onModalEscKeydown = (evt) => {
   if (isEscapeKey(evt)) {
@@ -61,7 +66,7 @@ const unblockSubmitButton = () => {
 const setUserFormSubmit = (onSuccess) => {
   form.addEventListener('submit', (evt) => {
     evt.preventDefault();
-    if (pristine.validate()) {
+    if (pristine.validate() && validateCommentLength) {
       blockSubmitButton();
 
       sendData(
