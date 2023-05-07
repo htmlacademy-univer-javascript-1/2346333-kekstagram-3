@@ -7,37 +7,62 @@ let currentEffect = 'none';
 const effects = {
   chrome: {
     filter: 'grayscale',
-    max: 1,
-    min: 0,
-    step: 0.1,
+    sliderOptions: {
+      range: {
+        max: 1,
+        min: 0,
+      },
+      start: 1,
+      step: 0.1,
+    },
     postfix: ''
   },
   sepia: {
     filter: 'sepia',
-    max: 1,
-    min: 0,
-    step: 0.1,
+    sliderOptions: {
+      range: {
+        max: 1,
+        min: 0,
+      },
+      start: 1,
+      step: 0.1,
+    },
     postfix: ''
   },
   marvin: {
     filter: 'invert',
-    max: 100,
-    min: 0,
-    step: 1,
+    sliderOptions: {
+      range: {
+        max: 100,
+        min: 0,
+      },
+      start: 100,
+      step: 1,
+    },
     postfix: '%'
   },
   phobos: {
     filter: 'blur',
-    max: 3,
-    min: 0,
-    step: 0.1,
+    sliderOptions: {
+      range: {
+        max: 3,
+        min: 0,
+      },
+      start: 3,
+      step: 0.1,
+    },
     postfix: 'px'
   },
   heat: {
     filter: 'brightness',
-    max: 3,
-    min: 1,
-    step: 0.1,
+    sliderOptions: {
+      range: {
+        max: 3,
+        min: 1,
+      },
+      start: 3,
+      step: 0.1,
+    },
     postfix: ''
   }
 };
@@ -51,51 +76,45 @@ const removeFilter = () => {
 
   slider.classList.toggle('hidden');
   currentEffect = 'none';
-}
+};
 
 const changeFilterClass = (effect) => {
   imgPreview.classList.remove(`effects__preview--${currentEffect}`);
   imgPreview.classList.add(`effects__preview--${effect}`);
 
   currentEffect = effect;
-}
+};
 
 noUiSlider.create(slider, {
   range: {
-    min: 0,
-    max: 100
+    max: 100,
+    min: 0
   },
-  start: 0,
-  step: 1,
-  connect: 'lower'
-})
+  start: 100
+});
 
-export const changeFilter = (evt) => {
+const changeFilter = (evt) => {
   if (evt.target.matches('input[type="radio"]')) {
     const newEffect = evt.target.value;
     changeFilterClass(newEffect);
 
     if (newEffect !== 'none') {
-  
+
       if (slider.classList.contains('hidden')) {
         slider.classList.remove('hidden');
       }
 
-      slider.noUiSlider.updateOptions({
-        range: {
-          min: effects[newEffect].min,
-          max: effects[newEffect].max
-        },
-        step: effects[newEffect].step
-      });
+      slider.noUiSlider.updateOptions(effects[newEffect].sliderOptions);
 
       slider.noUiSlider.on('update', () => {
         effectLevel.value = slider.noUiSlider.get();
         imgPreview.style.filter = `${effects[newEffect].filter}(${effectLevel.value}${effects[newEffect].postfix})`;
-      })
+      });
     } else {
       imgPreview.style.filter = 'none';
       slider.classList.toggle('hidden');
     }
   }
 };
+
+export {changeFilter, removeFilter};
