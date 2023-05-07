@@ -10,3 +10,5 @@ form.addEventListener('submit', (evt) => {
   evt.preventDefault();
   return pristine.validate();
 });
+
+export {pristine};

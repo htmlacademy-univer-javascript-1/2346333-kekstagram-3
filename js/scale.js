@@ -25,12 +25,19 @@ const onBiggerButton = () => {
   }
 };
 
-export const addEventListenerImage = () => {
+const resetScale = () => {
+  scaleValue.value = '100%';
+  element.style.transform = 'none';
+};
+
+const addEventListenerImage = () => {
   smallerButton.addEventListener('click', onSmallerButton);
   biggerButton.addEventListener('click', onBiggerButton);
 };
 
-export const removeEventListenerImage = () => {
+const removeEventListenerImage = () => {
   smallerButton.removeEventListener('click', onSmallerButton);
   biggerButton.removeEventListener('click', onBiggerButton);
 };
+
+export {addEventListenerImage, removeEventListenerImage, resetScale};
