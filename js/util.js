@@ -28,7 +28,6 @@ const showAlert = (message) => {
   alertContainer.style.backgroundColor = 'gold';
 
   alertContainer.textContent = message;
-
   document.body.append(alertContainer);
 
   setTimeout(() => {

@@ -11,6 +11,7 @@ const userModalCloseElement = document.querySelector('#upload-cancel');
 const form = document.querySelector('.img-upload__form');
 const submitButton = form.querySelector('.img-upload__submit');
 
+
 const validateCommentLength = () => {
   const commentText = document.querySelector('.text__description').textContent;
   checkLength(commentText.length, 20, 140);
